@@ -1,32 +1,23 @@
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Github, Linkedin, Mail, MapPin, Twitter, ExternalLink } from "lucide-react";
+import { Github, Linkedin, Mail, Twitter, ExternalLink } from "lucide-react";
 
 // About Card
 interface AboutCardProps {
   description: string;
-  location: string;
-  yearsOfExperience: number;
 }
 
-export function AboutCard({ description, location, yearsOfExperience }: AboutCardProps) {
+export function AboutCard({ description }: AboutCardProps) {
   return (
-    <Card className="h-full">
-      <CardHeader className="pb-3">
-        <CardTitle className="flex items-center gap-2">
+    <Card className="h-full gap-2">
+      <CardHeader>
+        <CardTitle className="flex items-center">
           <span>About</span>
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-2.5">
+      <CardContent className="space-y-1">
         <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
-        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-          <MapPin className="h-4 w-4" />
-          <span>{location}</span>
-        </div>
-        <div className="flex items-center gap-2 text-sm">
-          <Badge variant="secondary">{yearsOfExperience}+ years experience</Badge>
-        </div>
       </CardContent>
     </Card>
   );
@@ -42,8 +33,8 @@ interface SkillsCardProps {
 
 export function SkillsCard({ categories }: SkillsCardProps) {
   return (
-    <Card className="h-full">
-      <CardHeader className="pb-3">
+    <Card className="h-full gap-2">
+      <CardHeader>
         <CardTitle>Skills</CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">
@@ -170,19 +161,3 @@ export const SocialIcons = {
   Twitter: <Twitter className="h-5 w-5" />,
   Mail: <Mail className="h-5 w-5" />,
 };
-
-// Placeholder Card - decorative filler
-export function PlaceholderCard() {
-  return (
-    <Card className="h-full bg-gradient-to-br from-primary/5 via-background to-primary/5">
-      <CardContent className="flex items-center justify-center h-full p-6">
-        <div className="text-center space-y-2">
-          <div className="text-3xl mb-2">🚀</div>
-          <p className="text-sm font-medium text-muted-foreground">
-            More Coming Soon
-          </p>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}

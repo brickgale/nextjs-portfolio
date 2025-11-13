@@ -1,6 +1,7 @@
 import { Timeline } from "@/components/timeline";
-import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
 import { ModeToggle } from "@/components/mode-toggle";
+import Image from "next/image";
 import {
   AboutCard,
   SkillsCard,
@@ -8,48 +9,46 @@ import {
   ContactCard,
   StatsCard,
   SocialIcons,
-  PlaceholderCard,
 } from "@/components/bento-grid";
+import { MapPin } from "lucide-react";
+
+const profileData = {
+  name: "Mericel N. Monsales",
+  title: "Virtual Assistant | CSR | TSR",
+  location: "Tagbilaran City, Bohol, Philippines",
+  yearsOfExperience: 8,
+};
 
 // Placeholder data for about section
 const aboutData = {
   description:
-    "Passionate about building scalable web applications and solving complex problems. I love working with modern technologies and contributing to open-source projects. Always eager to learn and explore new technologies.",
-  location: "San Francisco, CA",
-  yearsOfExperience: 6,
+    "With extensive experience as a Customer Service Representative and Virtual Assistant, I specialize in providing responsive, detail-oriented support that enhances client satisfaction and operational efficiency. I’m skilled in managing communications, handling inquiries, and performing administrative tasks with accuracy and professionalism. My focus is always on delivering timely solutions and maintaining a positive customer experience across every interaction.",
 };
 
 // Placeholder data for skills
 const skillsData = {
   categories: [
     {
-      name: "Frontend",
-      skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vue.js"],
+      name: "Management",
+      skills: ["Team Leadership", "Project Management", "Customer Relations", "Conflict Resolution", "Time Management", "Technical Support"],
     },
     {
-      name: "Backend",
-      skills: ["Node.js", "Python", "PostgreSQL", "MongoDB", "REST APIs"],
+      name: "Tools",
+      skills: ["Canva", "Capcut", "MS Excel", "MS Word", "MS PowerPoint", "ChatGPT"],
     },
     {
-      name: "DevOps",
-      skills: ["Docker", "AWS", "CI/CD", "Kubernetes", "Linux"],
+      name: "Others",
+      skills: ["Social Media Management", "Advertising", "Marketing", "Email Campaigns", "Content Creation"],
     },
   ],
 };
 
-// Placeholder data for socials
 const socialsData = [
-  {
-    name: "GitHub",
-    icon: SocialIcons.Github,
-    url: "https://github.com/johndoe",
-    username: "@johndoe",
-  },
   {
     name: "LinkedIn",
     icon: SocialIcons.Linkedin,
-    url: "https://linkedin.com/in/johndoe",
-    username: "John Doe",
+    url: "https://www.linkedin.com/in/mericel-monsales-b81b45122/",
+    username: "Mericel Monsales",
   },
   {
     name: "Twitter",
@@ -78,47 +77,52 @@ const statsData = {
 // Placeholder data
 const experienceData = [
   {
-    title: "Senior Software Engineer",
-    organization: "Tech Company Inc.",
-    period: "2022 - Present",
+    title: "Customer Service Representative",
+    organization: "TaskUs",
+    period: "Jan 2024 - Aug 2025",
     description:
       "Leading development of cloud-based applications and mentoring junior developers. Architected scalable microservices handling millions of requests daily.",
-    skills: ["React", "Node.js", "TypeScript", "AWS", "PostgreSQL"],
   },
   {
-    title: "Software Engineer",
-    organization: "StartUp Solutions",
-    period: "2020 - 2022",
+    title: "Store Supervisor",
+    organization: "Estrella Bakery",
+    period: "Aug 2022 - Apr 2023",
     description:
       "Developed full-stack web applications using modern JavaScript frameworks. Collaborated with cross-functional teams to deliver high-quality products.",
-    skills: ["JavaScript", "Python", "Docker", "MongoDB", "REST APIs"],
   },
   {
-    title: "Junior Developer",
-    organization: "Digital Agency",
-    period: "2018 - 2020",
+    title: "TSR | Sales Auditor",
+    organization: "Alorica Philippines, Inc.",
+    period: "Feb 2016 - Apr 2018",
     description:
       "Built responsive websites and web applications for various clients. Gained experience in front-end development and UI/UX implementation.",
-    skills: ["HTML", "CSS", "JavaScript", "jQuery", "WordPress"],
+  },
+  {
+    title: "Direct Marketing Executive",
+    organization: "Camella Communities",
+    period: "Feb 2014 - Feb 2015",
+    description:
+      "Built responsive websites and web applications for various clients. Gained experience in front-end development and UI/UX implementation.",
+  },
+  {
+    title: "Sales Representative",
+    organization: "Save n Earn",
+    period: "Feb 2013 - Feb 2014",
+    description:
+      "Built responsive websites and web applications for various clients. Gained experience in front-end development and UI/UX implementation.",
   },
 ];
 
 const educationData = [
   {
-    title: "Master of Science in Computer Science",
-    organization: "University of Technology",
-    period: "2016 - 2018",
-    description:
-      "Specialized in Software Engineering and Distributed Systems. Graduated with honors, GPA 3.9/4.0.",
-    skills: ["Algorithms", "Machine Learning", "Cloud Computing"],
+    title: "Hotel and Restaurant Management (Undergraduate)",
+    organization: "Holy Name University",
+    period: "2009 - 2013",
   },
   {
-    title: "Bachelor of Science in Computer Science",
-    organization: "State University",
-    period: "2012 - 2016",
-    description:
-      "Completed comprehensive coursework in computer science fundamentals. Active member of the Programming Club and participated in hackathons.",
-    skills: ["Data Structures", "OOP", "Database Systems"],
+    title: "Highschool Diploma",
+    organization: "Holy Name University",
+    period: "2005 - 2009",
   },
 ];
 
@@ -127,14 +131,32 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       <main className="container mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         {/* Header with Theme Toggle */}
-        <div className="mb-12 flex items-start justify-between gap-4">
-          <div className="space-y-4">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-              John Doe
-            </h1>
-            <p className="text-xl text-muted-foreground">
-              Full Stack Developer & Software Engineer
-            </p>
+        <div className="mb-8 flex items-start justify-between gap-4">
+          <div className="flex items-center gap-6">
+            <Image
+              src="/profile_pic.png"
+              alt="Profile Picture"
+              width={100}
+              height={100}
+              className="rounded-sm ring-2 ring-primary/20"
+              priority
+            />
+            <div className="space-y-2">
+              <h1 className="text-2xl mb-0 font-bold tracking-tight sm:text-3xl">
+                {profileData.name}
+              </h1>
+              <p className="text-xl mb-1 text-muted-foreground tracking-tight">
+                {profileData.title}
+              </p>
+              
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <MapPin className="h-4 w-4" />
+                <span>{profileData.location}</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <Badge variant="secondary">{profileData.yearsOfExperience}+ years experience</Badge>
+              </div>
+            </div>
           </div>
           <ModeToggle />
         </div>
@@ -170,13 +192,8 @@ export default function Home() {
           </div>
 
           {/* Row 3 - Education Timeline (3 cols, rows 3-4) - positioned on right side */}
-          <div className="md:col-span-4 lg:col-span-3 lg:row-span-2 lg:col-start-4 lg:row-start-3">
+          <div className="md:col-span-4 lg:col-span-3 lg:row-span-1 lg:col-start-4 lg:row-start-3">
             <Timeline items={educationData} title="Education" />
-          </div>
-
-          {/* Row 4 - Placeholder (3 cols, row 4) - fills space below Experience */}
-          <div className="md:col-span-2 lg:col-span-3 lg:row-span-1 lg:col-start-1 lg:row-start-4">
-            <PlaceholderCard />
           </div>
         </div>
       </main>

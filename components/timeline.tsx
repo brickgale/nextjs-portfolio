@@ -7,7 +7,6 @@ interface TimelineItemProps {
   organization: string;
   period: string;
   description: string;
-  skills?: string[];
 }
 
 export function TimelineItem({
@@ -15,14 +14,13 @@ export function TimelineItem({
   organization,
   period,
   description,
-  skills,
 }: TimelineItemProps) {
   return (
     <div className="relative flex gap-6 pb-8 last:pb-0 group">
       {/* Timeline line and dot */}
-      <div className="relative flex flex-col items-center">
-        <div className="w-4 h-4 rounded-full bg-primary ring-4 ring-card border-2 border-card z-10" />
-        <div className="w-0.5 h-full bg-border absolute top-4 last:hidden" />
+      <div className="relative flex flex-col items-center w-4">
+        <div className="w-4 h-4 rounded-full bg-primary ring-4 ring-card border-2 border-card z-10 shrink-0" />
+        <div className="w-0.5 flex-1 bg-border mt-2" />
       </div>
 
       {/* Content */}
@@ -36,16 +34,7 @@ export function TimelineItem({
             {period}
           </Badge>
         </div>
-        <p className="text-sm text-muted-foreground mb-3">{description}</p>
-        {skills && skills.length > 0 && (
-          <div className="flex flex-wrap gap-2">
-            {skills.map((skill, index) => (
-              <Badge key={index} variant="outline" className="text-xs">
-                {skill}
-              </Badge>
-            ))}
-          </div>
-        )}
+        {/* <p className="text-sm text-muted-foreground mb-3">{description}</p> */}
       </div>
     </div>
   );
@@ -58,9 +47,9 @@ interface TimelineProps {
 
 export function Timeline({ items, title }: TimelineProps) {
   return (
-    <Card className="h-full">
-      <CardHeader>
-        <CardTitle className="text-3xl">{title}</CardTitle>
+    <Card className="h-full gap-4">
+      <CardHeader className="gap-0">
+        <CardTitle className="text-2xl">{title}</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="relative">
