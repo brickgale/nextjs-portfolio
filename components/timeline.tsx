@@ -6,7 +6,7 @@ interface TimelineItemProps {
   title: string;
   organization: string;
   period: string;
-  description: string;
+  description?: string;
 }
 
 export function TimelineItem({
@@ -34,7 +34,6 @@ export function TimelineItem({
             {period}
           </Badge>
         </div>
-        {/* <p className="text-sm text-muted-foreground mb-3">{description}</p> */}
       </div>
     </div>
   );
