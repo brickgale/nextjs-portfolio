@@ -10,7 +10,7 @@ interface AboutCardProps {
 
 export function AboutCard({ description }: AboutCardProps) {
   return (
-    <Card className="h-full gap-2">
+    <Card className="h-full">
       <CardHeader>
         <CardTitle className="flex items-center">
           <span>About</span>
@@ -33,7 +33,7 @@ interface SkillsCardProps {
 
 export function SkillsCard({ categories }: SkillsCardProps) {
   return (
-    <Card className="h-full gap-2">
+    <Card className="h-full">
       <CardHeader>
         <CardTitle>Skills</CardTitle>
       </CardHeader>
@@ -106,7 +106,7 @@ interface ContactCardProps {
 export function ContactCard({ email, availability }: ContactCardProps) {
   return (
     <Card className="h-full">
-      <CardHeader className="pb-3">
+      <CardHeader>
         <CardTitle>Get in Touch</CardTitle>
       </CardHeader>
       <CardContent className="space-y-2.5">
@@ -137,7 +137,7 @@ interface StatsCardProps {
 export function StatsCard({ stats }: StatsCardProps) {
   return (
     <Card className="h-full">
-      <CardHeader className="pb-3">
+      <CardHeader>
         <CardTitle>Highlights</CardTitle>
       </CardHeader>
       <CardContent>

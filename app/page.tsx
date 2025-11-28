@@ -60,7 +60,7 @@ const socialsData = [
 
 // Placeholder data for contact
 const contactData = {
-  email: "john.doe@example.com",
+  email: "mericelmonsales@gmail.com",
   availability: "Available for freelance work",
 };
 
@@ -158,7 +158,10 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <ModeToggle />
+          {/* Theme toggle - visible on sm and above */}
+          <div className="fixed bottom-6 right-6 z-50 sm:relative sm:bottom-0 sm:right-0">
+            <ModeToggle />
+          </div>
         </div>
 
         {/* Bento Grid Layout - 6 columns (allows 1.5x sizing for timelines) */}
