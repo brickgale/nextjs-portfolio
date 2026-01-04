@@ -101,9 +101,18 @@ export function SocialsCard({ socials }: SocialsCardProps) {
 interface ContactCardProps {
   email: string;
   availability: string;
+  status?: 'available' | 'unavailable' | 'upcoming';
 }
 
-export function ContactCard({ email, availability }: ContactCardProps) {
+export function ContactCard({ email, availability, status = 'unavailable' }: ContactCardProps) {
+  const statusConfig = {
+    available: { color: 'bg-green-500', animate: 'animate-pulse' },
+    unavailable: { color: 'bg-red-500', animate: '' },
+    upcoming: { color: 'bg-yellow-500', animate: 'animate-pulse' },
+  };
+
+  const { color, animate } = statusConfig[status];
+
   return (
     <Card className="h-full">
       <CardHeader>
@@ -118,7 +127,7 @@ export function ContactCard({ email, availability }: ContactCardProps) {
           <span className="text-sm font-medium">{email}</span>
         </a>
         <div className="flex items-center gap-2 text-xs text-muted-foreground">
-          <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+          <div className={`h-2 w-2 rounded-full ${color} ${animate}`} />
           <span>{availability}</span>
         </div>
       </CardContent>
@@ -141,13 +150,8 @@ export function StatsCard({ stats }: StatsCardProps) {
         <CardTitle>Highlights</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="grid grid-cols-2 gap-3">
-          {stats.map((stat, index) => (
-            <div key={index} className="text-center">
-              <div className="text-xl font-bold text-primary">{stat.value}</div>
-              <div className="text-xs text-muted-foreground mt-0.5">{stat.label}</div>
-            </div>
-          ))}
+        <div className="flex items-center justify-center h-24">
+          <p className="text-sm text-muted-foreground italic">Will be updated soon</p>
         </div>
       </CardContent>
     </Card>

@@ -172,7 +172,7 @@ export default function Home() {
           </div>
           
           <div className="md:col-span-2 lg:col-span-2 lg:row-span-1">
-            <StatsCard {...statsData} />
+            <SkillsCard {...skillsData} />
           </div>
 
           <div className="md:col-span-2 lg:col-span-2 lg:row-span-1">
@@ -184,9 +184,9 @@ export default function Home() {
             <Timeline items={experienceData} title="Experience" />
           </div>
 
-          {/* Row 2 - Skills (2 cols, row 2) */}
+          {/* Row 2 - Stats (2 cols, row 2) */}
           <div className="md:col-span-2 lg:col-span-2 lg:row-span-1 lg:col-start-4 lg:row-start-2">
-            <SkillsCard {...skillsData} />
+            <StatsCard {...statsData} />
           </div>
 
           {/* Row 2 - Socials (1 col, row 2) */}
